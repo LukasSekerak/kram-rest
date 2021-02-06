@@ -2,6 +2,7 @@ package sk.upjs.kramrest;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import kram.storage.subject.SubjectDao;
 
 @RestController
 @RequestMapping("/subjects")
+@CrossOrigin
 public class SubjectController {
 
 	private SubjectDao subjectDao = DaoFactory.INSTATNCE.getSubjectDao();
@@ -26,19 +28,19 @@ public class SubjectController {
 		return subjectDao.getAll();
 	}
 	
-	@GetMapping("/{idSubject}")
+	@GetMapping("{idSubject}")
 	public Subject getById(@PathVariable("idSubject") long idSubject) throws EntityNotFoundException {
 		return subjectDao.getById(idSubject);
 		
 	}
 	
-	@GetMapping("/{idUser}")
+	@GetMapping("/idUser/{idUser}")
 	public List<Subject> getAllForUser(@PathVariable("idUser") long idUser) throws EntityNotFoundException {
 		return subjectDao.getAllForUser(idUser);
 		
 	}
 	
-	@GetMapping("/{subString}")
+	@GetMapping("/substring/{subString}")
 	public List<Subject> getAllForUser(@PathVariable("subString") String subString) throws EntityNotFoundException {
 		return subjectDao.getBySubstring(subString);
 		
