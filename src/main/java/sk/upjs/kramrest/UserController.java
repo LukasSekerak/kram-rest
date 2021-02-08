@@ -23,8 +23,7 @@ public class UserController {
 	
 	private UserDao userDao = DaoFactory.INSTATNCE.getUserDao();
 	
-//	List<User> getAllAcceptedInCourse(Long idCourse) throws EntityNotFoundException;
-//	List<User> getAllWaitingInCourse(Long idCourse) throws EntityNotFoundException;
+
 //	boolean checkUsername(String username) throws EntityNotFoundException;
 	
 	@GetMapping()
@@ -46,6 +45,18 @@ public class UserController {
 	@GetMapping("/userName/{userName}")
 	public User getByUsername(@PathVariable("userName") String userName) throws EntityNotFoundException {
 		return userDao.getByUsername(userName);
+		
+	}
+	
+	@GetMapping("/acceptedInCourse/{idCourse}")
+	public List<User> getAllAcceptedInCourse(@PathVariable("idCourse") long idCourse) throws EntityNotFoundException {
+		return userDao.getAllAcceptedInCourse(idCourse);
+		
+	}
+	
+	@GetMapping("/waitingInCourse/{idCourse}")
+	public List<User> getAllWaitingInCourse(@PathVariable("idCourse") long idCourse) throws EntityNotFoundException {
+		return userDao.getAllWaitingInCourse(idCourse);
 		
 	}
 	
