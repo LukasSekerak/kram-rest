@@ -24,8 +24,8 @@ public class OptionController {
 	private OptionDao optionDao = DaoFactory.INSTATNCE.getOptionDao();
 
 	@GetMapping("{idOption}")
-	public Option getById(@PathVariable("idOption") long idCourse) throws EntityNotFoundException {
-		return optionDao.getById(idCourse);
+	public Option getById(@PathVariable("idOption") long idOption) throws EntityNotFoundException {
+		return optionDao.getById(idOption);
 		
 	}
 	

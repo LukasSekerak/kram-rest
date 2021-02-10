@@ -22,10 +22,7 @@ import kram.storage.user.UserDao;
 public class UserController {
 	
 	private UserDao userDao = DaoFactory.INSTATNCE.getUserDao();
-	
-
-//	boolean checkUsername(String username) throws EntityNotFoundException;
-	
+		
 	@GetMapping()
 	private List<User> getAllusers() {
 		return userDao.getAll();
@@ -37,7 +34,7 @@ public class UserController {
 		
 	}
 	
-	@GetMapping("login/{userName}/{passwd}")
+	@PostMapping("login/{userName}/{passwd}")
 	public User login(@PathVariable("userName") String userName, @PathVariable("passwd") String passwd) {
 		return userDao.login(userName,passwd);
 	}
@@ -51,6 +48,12 @@ public class UserController {
 	@GetMapping("/acceptedInCourse/{idCourse}")
 	public List<User> getAllAcceptedInCourse(@PathVariable("idCourse") long idCourse) throws EntityNotFoundException {
 		return userDao.getAllAcceptedInCourse(idCourse);
+		
+	}
+	
+	@GetMapping("/checkUserName/{userName}")
+	public boolean checkUsername(@PathVariable("userName") String userName) throws EntityNotFoundException {
+		return userDao.checkUsername(userName);
 		
 	}
 	

@@ -52,8 +52,8 @@ public class CourseController {
 		
 	}
 	
-	@PostMapping()
-	public Course saveUser(@RequestBody Course course) throws EntityNotFoundException {
+	@PostMapping("")
+	public Course saveCourse(@RequestBody Course course) throws EntityNotFoundException {
 		return courseDao.saveCourse(course);
 	}
 	

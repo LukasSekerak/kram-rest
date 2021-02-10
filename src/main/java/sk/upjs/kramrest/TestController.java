@@ -40,6 +40,18 @@ public class TestController {
 	private List<KramTest> getAllTests() {
 		return testDao.getAll();
 	}
+	
+	@GetMapping("/course/{idCourse}")
+	public List<KramTest> getAllByCourseId(@PathVariable("idCourse") long idCourse) throws EntityNotFoundException {
+		return testDao.getAllByCourseId(idCourse);
+		
+	}
+	
+	@GetMapping("/allInfo/{idUser}")
+	public List<KramTest> getAllInfo(@PathVariable("idUser") long idUser) throws EntityNotFoundException {
+		return testDao.getAllInfo(idUser);
+		
+	}
 				
 	@PostMapping()
 	public KramTest saveTest(@RequestBody KramTest question) throws EntityNotFoundException, NullPointerException {
